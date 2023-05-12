@@ -1,19 +1,19 @@
 <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
-            xmlns:tns="http://localhost:8081"
-            targetNamespace="http://localhost:8081"
+            xmlns:tns="http://localhost:9090"
+            targetNamespace="http://localhost:9090"
             elementFormDefault="qualified">
 
-    <xs:complexType name="hotel">
+    <xs:complexType name="hotelInfo">
         <xs:sequence>
             <xs:element name="hotelId" type="xs:long"/>
             <xs:element name="name" type="xs:string"/>
             <xs:element name="address" type="xs:string"/>
             <xs:element name="rating" type="xs:int"/>
-            <xs:element name="amenities" type="tns:amenity" maxOccurs="unbounded"/>
+            <xs:element name="amenities" type="tns:amenityInfo" maxOccurs="unbounded"/>
         </xs:sequence>
     </xs:complexType>
 
-    <xs:complexType name="amenity">
+    <xs:complexType name="amenityInfo">
         <xs:sequence>
             <xs:element name="amenityId" type="xs:long"/>
             <xs:element name="name" type="xs:string"/>
@@ -38,7 +38,7 @@
     <xs:element name="getHotelByIdResponse">
         <xs:complexType>
             <xs:sequence>
-                <xs:element name="hotel" type="tns:hotel"/>
+                <xs:element name="hotelInfo" type="tns:hotelInfo"/>
                 <xs:element name="serviceStatus" type="tns:serviceStatus"/>
             </xs:sequence>
         </xs:complexType>
@@ -58,7 +58,7 @@
         <xs:complexType>
             <xs:sequence>
                 <xs:element name="serviceStatus" type="tns:serviceStatus"/>
-                <xs:element name="hotel" type="tns:hotel"/>
+                <xs:element name="hotelInfo" type="tns:hotelInfo"/>
             </xs:sequence>
         </xs:complexType>
     </xs:element>
@@ -66,7 +66,7 @@
     <xs:element name="updateHotelRequest">
         <xs:complexType>
             <xs:sequence>
-                <xs:element name="hotel" type="tns:hotel"/>
+                <xs:element name="hotelInfo" type="tns:hotelInfo"/>
             </xs:sequence>
         </xs:complexType>
     </xs:element>
@@ -75,7 +75,7 @@
         <xs:complexType>
             <xs:sequence>
                 <xs:element name="serviceStatus" type="tns:serviceStatus"/>
-                <xs:element name="hotel" type="tns:hotel"/>
+                <xs:element name="hotelInfo" type="tns:hotelInfo"/>
             </xs:sequence>
         </xs:complexType>
     </xs:element>
@@ -109,10 +109,44 @@
     <xs:element name="getAllHotelsByNameResponse">
         <xs:complexType>
             <xs:sequence>
-                <xs:element name="hotel" type="tns:hotel" maxOccurs="unbounded"/>
+                <xs:element name="hotelInfo" type="tns:hotelInfo" maxOccurs="unbounded"/>
                 <xs:element name="serviceStatus" type="tns:serviceStatus"/>
             </xs:sequence>
         </xs:complexType>
     </xs:element>
 
+    <xs:element name="addAmenityRequest">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="amenityId" type="xs:long"/>
+                <xs:element name="hotelId" type="xs:long"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="addAmenityResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="serviceStatus" type="tns:serviceStatus"/>
+                <xs:element name="amenityInfo" type="tns:amenityInfo"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="deleteAmenityRequest">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="amenityId" type="xs:long"/>
+                <xs:element name="hotelId" type="xs:long"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+
+    <xs:element name="deleteAmenityResponse">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="serviceStatus" type="tns:serviceStatus"/>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
 </xs:schema>

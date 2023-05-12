@@ -51,6 +51,14 @@
 			<artifactId>spring-boot-starter-test</artifactId>
 			<scope>test</scope>
 		</dependency>
+		<dependency>
+                    <groupId>wsdl4j</groupId>
+                    <artifactId>wsdl4j</artifactId>
+                </dependency>
+                <dependency>
+			<groupId>javax.xml.bind</groupId>
+			<artifactId>jaxb-api</artifactId>
+		</dependency>
 	</dependencies>
 
 	<build>
@@ -74,17 +82,18 @@
 				<version>2.3.1</version>
 				<executions>
 					<execution>
-						<id>xjc-schema</id>
+						<id>xjc</id>
 						<goals>
 							<goal>xjc</goal>
 						</goals>
 					</execution>
 				</executions>
 				<configuration>
-					<sources>
-						<source>src/main/resources/hotels.xsd</source>
-					</sources>
-					<packageName>com.choice.gs_ws</packageName>
+                                        <sources>
+                                            <source>${project.basedir}/src/main/resources/xsd/hotels.xsd</source>
+                                        </sources>
+					<outputDirectory>${project.basedir}/src/main/java</outputDirectory>
+					<packageName>com.choice.hotels</packageName>
 					<clearOutputDir>false</clearOutputDir>
 				</configuration>
 			</plugin>
