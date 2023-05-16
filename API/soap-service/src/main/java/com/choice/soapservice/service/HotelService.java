@@ -1,15 +1,14 @@
 package com.choice.soapservice.service;
 
-import java.util.List;
-
-import com.choice.soapservice.model.Hotel;
+import com.choice.hotels.*;
 
 public interface HotelService {
 
-    public Hotel findHotelById(long hotelId);
-    public List<Hotel> findAllByName(String name, int page, int size);
-    public Hotel save(Hotel toSave);
-    public void deleteById(long hotelId);
-    public void updateHotel(Hotel toSave);
-    public List<Hotel> findByName(String name);
+    public GetHotelByIdResponse findHotelById(GetHotelByIdRequest request);
+    public GetAllHotelsByNameResponse findAllByName(GetAllHotelsByNameRequest request);
+    public CreateHotelResponse save(CreateHotelRequest request);
+    public DeleteHotelResponse deleteById(DeleteHotelRequest request);
+    public UpdateHotelResponse updateHotel(UpdateHotelRequest request);
+    public AddAmenityResponse addAmenity(AddAmenityRequest request);
+    public DeleteAmenityResponse deleteAmenity(DeleteAmenityRequest request);
 }
